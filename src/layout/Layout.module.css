@@ -7,6 +7,8 @@
    * difference blend has nothing to invert against if white only comes from <body>.
    */
   background: var(--color-bg);
+  /* A stacking context, so the backdrop (z-index -1) paints above this background. */
+  isolation: isolate;
   /* HUD depth scales blocks past their boxes; never let that create scrollbars. */
   overflow: clip;
 }

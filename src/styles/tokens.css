@@ -19,6 +19,24 @@
   --color-disc-ring: #434343;
   --color-disc-hole: #f2f2f2;
   --color-border: #e6e6e6;
+  --color-wave: #8fa3b8; /* faint light ribbons behind the home page */
+
+  /* Glass: a slanted shine and bright rim laid over solid surfaces */
+  --glass-gloss:
+    linear-gradient(
+      115deg,
+      rgb(255 255 255 / 0.14),
+      rgb(255 255 255 / 0.04) 36%,
+      rgb(255 255 255 / 0) 38%
+    ),
+    linear-gradient(
+      115deg,
+      rgb(255 255 255 / 0) 44%,
+      rgb(255 255 255 / 0.02) 45%,
+      rgb(255 255 255 / 0.02) 49%,
+      rgb(255 255 255 / 0) 50%
+    );
+  --glass-rim: inset 0 1px 0 rgb(255 255 255 / 0.45), inset 0 0 0 1px rgb(255 255 255 / 0.14);
 
   /* Typography */
   --font-sans: 'Geist Variable', 'PingFang SC', 'Noto Sans SC', system-ui, sans-serif;

@@ -13,7 +13,8 @@
   line-height: 1;
   white-space: nowrap;
   color: var(--color-on-surface);
-  background: var(--color-surface);
+  background: var(--glass-gloss), var(--color-surface);
+  box-shadow: var(--glass-rim);
   transition: background-color 150ms ease;
 }
 
@@ -40,7 +41,7 @@
 }
 
 .button:hover {
-  background: var(--color-surface-hover);
+  background: var(--glass-gloss), var(--color-surface-hover);
 }
 
 /* clip-path hides an outside outline, so draw focus inside the shape. */

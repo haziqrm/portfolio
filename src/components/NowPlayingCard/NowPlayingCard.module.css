@@ -61,7 +61,8 @@
   padding-left: calc(var(--disc) / 2 + 19 * var(--u));
   padding-right: calc(32 * var(--u));
   color: var(--color-on-surface);
-  background: var(--color-surface);
+  background: var(--glass-gloss), var(--color-surface);
+  box-shadow: var(--glass-rim);
   clip-path: polygon(
     0 0,
     calc(100% - var(--chamfer-lg)) 0,

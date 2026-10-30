@@ -18,17 +18,21 @@
   object-fit: cover;
 }
 
-/* Subtle light fade toward the bottom edge, over both background and render. */
+/* Glass gloss and rim, plus a subtle light fade toward the bottom edge, over the render. */
 .card::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgb(255 255 255 / 0) 45%,
-    rgb(255 255 255 / 0.06) 70%,
-    rgb(255 255 255 / 0.18) 87%,
-    rgb(255 255 255 / 0.32) 100%
-  );
+  border-radius: inherit;
+  box-shadow: var(--glass-rim);
+  background:
+    var(--glass-gloss),
+    linear-gradient(
+      to bottom,
+      rgb(255 255 255 / 0) 45%,
+      rgb(255 255 255 / 0.06) 70%,
+      rgb(255 255 255 / 0.18) 87%,
+      rgb(255 255 255 / 0.32) 100%
+    );
   pointer-events: none;
 }

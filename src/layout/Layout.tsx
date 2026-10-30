@@ -1,6 +1,7 @@
 import { useRef, type CSSProperties } from 'react';
 import { AppRoutes } from '../AppRoutes';
 import { CursorHalftone } from '../components/CursorHalftone/CursorHalftone';
+import { WaveBackdrop } from '../components/WaveBackdrop/WaveBackdrop';
 import { useHudDepth } from '../hooks/useHudDepth';
 import { TRANSITION, usePageTransition } from '../hooks/usePageTransition';
 import { Header } from './Header';
@@ -25,6 +26,7 @@ export function Layout() {
 
   return (
     <div className={styles.page} style={timing}>
+      <WaveBackdrop active={shown.pathname === '/'} />
       <Header />
       <main ref={stageRef} className={styles.main} data-phase={phase} inert={phase === 'exit'}>
         <AppRoutes location={shown} />

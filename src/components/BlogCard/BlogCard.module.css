@@ -1,4 +1,5 @@
 .card {
+  position: relative;
   display: grid;
   grid-template-columns: 69fr 31fr;
   height: calc(297 * var(--u));
@@ -11,6 +12,17 @@
 
 .card:hover {
   transform: scale(1.03);
+}
+
+/* Glass gloss and rim across the whole card, cover included. */
+.card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--glass-gloss);
+  box-shadow: var(--glass-rim);
+  pointer-events: none;
 }
 
 .body {
