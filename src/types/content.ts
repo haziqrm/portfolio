@@ -46,8 +46,6 @@ export interface HomeSection<T> {
 export interface SiteContent {
   name: string;
   nav: LinkRef[];
-  /** Shown by the page transition when heading to a route that isn't in the nav. */
-  notFoundLabel: string;
 }
 
 export interface HomeContent {

@@ -4,27 +4,25 @@ import { layoutRect } from '../utils/layoutRect';
 
 /**
  * idle  → nothing happening
- * exit  → the shown page's [data-reveal] items fall back toward the screen centre and fade
- * hold  → page hidden, the HUD overlay locks onto the destination
- * enter → the new page's items fly in from the distance
+ * exit  → the shown page's [data-reveal] items zoom out and fade
+ * enter → the new page's items zoom in
  */
-export type TransitionPhase = 'idle' | 'exit' | 'hold' | 'enter';
+export type TransitionPhase = 'idle' | 'exit' | 'enter';
 
 /* Timings (ms). Layout passes these to CSS as custom properties. */
 export const TRANSITION = {
-  exitMs: 420,
-  exitStaggerMs: 50, // per data-reveal step
-  holdMs: 340,
-  enterMs: 700,
-  enterStaggerMs: 90,
+  exitMs: 280,
+  exitStaggerMs: 30, // per data-reveal step
+  enterMs: 460,
+  enterStaggerMs: 50,
 };
 
 const prefersReducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /**
- * Prepares each [data-reveal] item for the stage animations: its order as --i (for the
- * stagger) and the vector from its centre to the screen centre as --to-x / --to-y (so items
- * converge on one vanishing point). Returns the highest order.
+ * Prepares each [data-reveal] item for the animations: its order as --i (for the stagger) and
+ * the vector from its centre to the screen centre as --to-x / --to-y (so the page zooms about
+ * the screen centre rather than each item about its own). Returns the highest order.
  */
 function prepareItems(stage: HTMLElement | null) {
   let last = 0;
@@ -41,7 +39,7 @@ function prepareItems(stage: HTMLElement | null) {
 
 /**
  * Drives page transitions. `shown` is the location to render: it stays on the old page while
- * it animates out and only switches once the HUD overlay is covering the swap. `target` is
+ * it animates out, then switches and animates the new page in. `target` is
  * where the user is going. Navigating again mid-transition just retargets it.
  */
 export function usePageTransition(stageRef: RefObject<HTMLElement | null>) {
@@ -76,15 +74,11 @@ export function usePageTransition(stageRef: RefObject<HTMLElement | null>) {
     const duration =
       phase === 'exit'
         ? TRANSITION.exitMs + last * TRANSITION.exitStaggerMs
-        : phase === 'hold'
-          ? TRANSITION.holdMs
-          : TRANSITION.enterMs + last * TRANSITION.enterStaggerMs;
+        : TRANSITION.enterMs + last * TRANSITION.enterStaggerMs;
 
     const timer = window.setTimeout(() => {
       const { shown, target } = latest.current;
       if (phase === 'exit') {
-        setPhase('hold');
-      } else if (phase === 'hold') {
         setShown(target);
         window.scrollTo(0, 0);
         setPhase('enter');
@@ -98,5 +92,5 @@ export function usePageTransition(stageRef: RefObject<HTMLElement | null>) {
     return () => window.clearTimeout(timer);
   }, [phase, stageRef]);
 
-  return { shown, target, phase };
+  return { shown, phase };
 }

@@ -17,7 +17,6 @@ export const site: SiteContent = {
     { label: 'Blog', to: '/blog' },
     { label: 'Contact', to: '/contact' },
   ],
-  notFoundLabel: 'Not found',
 };
 
 export const home: HomeContent = {

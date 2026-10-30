@@ -8,11 +8,6 @@ dist
 *.tsbuildinfo
 .DS_Store
 
-# Claude Code
-CLAUDE.md
-CLAUDE.local.md
-.claude/
-
 # Local design comparison screenshots
 design-vs-build-*.png
 
