@@ -1,0 +1,56 @@
+.button {
+  --cut: var(--chamfer-sm);
+
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--button-width);
+  height: var(--button-height);
+  padding-inline: calc(24 * var(--u));
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  line-height: 1;
+  white-space: nowrap;
+  color: var(--color-on-surface);
+  background: var(--color-surface);
+  transition: background-color 150ms ease;
+}
+
+.button[data-corners='tr-bl'] {
+  clip-path: polygon(
+    0 0,
+    calc(100% - var(--cut)) 0,
+    100% var(--cut),
+    100% 100%,
+    var(--cut) 100%,
+    0 calc(100% - var(--cut))
+  );
+}
+
+.button[data-corners='tl-br'] {
+  clip-path: polygon(
+    var(--cut) 0,
+    100% 0,
+    100% calc(100% - var(--cut)),
+    calc(100% - var(--cut)) 100%,
+    0 100%,
+    0 var(--cut)
+  );
+}
+
+.button:hover {
+  background: var(--color-surface-hover);
+}
+
+/* clip-path hides an outside outline, so draw focus inside the shape. */
+.button:focus-visible {
+  outline: 2px solid var(--color-on-surface);
+  outline-offset: -6px;
+}
+
+@media (max-width: 1023.98px) {
+  .button {
+    min-height: 40px;
+  }
+}

@@ -1,0 +1,78 @@
+/*
+ * Design tokens. Values are measured from design/home-baseline.png (1920px frame).
+ *
+ * --u is a "design pixel": exactly 1px when the viewport is at least 1920x1080, otherwise
+ * scaled by whichever of width/1920 or height/1080 is tighter, so the whole desktop page
+ * always fits on one screen without scrolling. Write any baseline measurement as
+ * calc(N * var(--u)). Below 1024px (stacked layout) it is re-based on a 480px column and the
+ * page scrolls.
+ */
+:root {
+  /* Colour */
+  --color-bg: #fff;
+  --color-ink: #000; /* name, nav */
+  --color-text: #2c2c2c; /* headings, body copy */
+  --color-surface: #2c2c2c; /* buttons, track banner, bracket marks */
+  --color-surface-hover: #3d3d3d;
+  --color-surface-deep: #232323; /* project + blog cards */
+  --color-on-surface: #fff;
+  --color-disc-ring: #434343;
+  --color-disc-hole: #f2f2f2;
+  --color-border: #e6e6e6;
+
+  /* Typography */
+  --font-sans: 'Geist Variable', 'PingFang SC', 'Noto Sans SC', system-ui, sans-serif;
+  --fw-light: 300;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+
+  /* Scale */
+  --u: clamp(0.4px, min(100vw / 1920, 100dvh / 1080), 1px);
+
+  /*
+   * Font sizes: the max is the 1920px value, calibrated so Geist in the browser matches the
+   * baseline's rendered text widths; the min keeps text readable when scaled down.
+   */
+  --fs-display: clamp(36px, calc(74 * var(--u)), 74px); /* name */
+  --fs-heading: clamp(16px, calc(31.5 * var(--u)), 31.5px); /* section headings, blog title */
+  --fs-title: clamp(15px, calc(27.6 * var(--u)), 27.6px); /* education card title */
+  --fs-xl: clamp(14px, calc(26 * var(--u)), 26px); /* nav, track */
+  --fs-lg: clamp(13px, calc(21.6 * var(--u)), 21.6px); /* tagline */
+  --fs-md: clamp(12px, calc(20 * var(--u)), 20px); /* read time */
+  --fs-base: clamp(12px, calc(19.7 * var(--u)), 19.7px); /* dates */
+  --fs-sm: clamp(11px, calc(18 * var(--u)), 18px); /* button labels */
+  --fs-xs: clamp(11px, calc(17 * var(--u)), 17px); /* card details */
+
+  /* Spacing */
+  --space-1: calc(4 * var(--u));
+  --space-2: calc(8 * var(--u));
+  --space-3: calc(16 * var(--u));
+  --space-4: calc(24 * var(--u));
+  --space-5: calc(32 * var(--u));
+  --space-6: calc(48 * var(--u));
+  --space-7: calc(64 * var(--u));
+
+  /* Radii and cuts */
+  --radius-card: calc(40 * var(--u));
+  --radius-card-lg: calc(44 * var(--u));
+  --chamfer-sm: calc(14 * var(--u));
+  --chamfer-lg: calc(26 * var(--u));
+
+  /* Layout: desktop three-column grid */
+  --col-side: calc(480 * var(--u));
+  --col-centre: calc(504 * var(--u));
+  --col-gap: calc(112 * var(--u));
+  --button-width: calc(180 * var(--u));
+  --button-height: calc(45 * var(--u));
+
+  /* Layout: stacked, below 1024px */
+  --stack-width: 480px;
+  --page-gutter: 16px;
+}
+
+@media (max-width: 1023.98px) {
+  :root {
+    --u: clamp(0.6px, calc((100vw - 2 * var(--page-gutter)) / 480), 1px);
+  }
+}

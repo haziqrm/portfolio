@@ -1,0 +1,21 @@
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  min-height: var(--button-height);
+}
+
+.row[data-align='center'] {
+  justify-content: center;
+  text-align: center;
+}
+
+.title {
+  font-size: var(--fs-heading);
+  font-weight: var(--fw-semibold);
+  line-height: 1.2;
+  color: var(--color-text);
+  /* Geist sits low in its line box; nudge up to centre on the button like the baseline. */
+  padding-bottom: calc(6 * var(--u));
+}

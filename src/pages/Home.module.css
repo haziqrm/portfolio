@@ -1,0 +1,130 @@
+/*
+ * Desktop: three columns with the tagline beneath, all measurements from the 1920px baseline.
+ * Below 1024px: one column ordered name -> photo -> tagline -> left -> right.
+ */
+.grid {
+  display: grid;
+  grid-template-columns: var(--col-side) var(--col-centre) var(--col-side);
+  grid-template-areas:
+    'left centre right'
+    'tagline tagline tagline';
+  justify-content: center;
+  column-gap: var(--col-gap);
+}
+
+.centre {
+  grid-area: centre;
+}
+
+.portrait {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+}
+
+.tagline {
+  grid-area: tagline;
+  margin-top: calc(48 * var(--u));
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-light);
+  line-height: 1.19;
+  text-align: center;
+}
+
+.tagline span {
+  display: block;
+  text-wrap: balance;
+}
+
+.left {
+  grid-area: left;
+  padding-top: calc(11 * var(--u));
+}
+
+.right {
+  grid-area: right;
+  padding-top: calc(11 * var(--u));
+}
+
+.educationCard {
+  margin-top: calc(16 * var(--u));
+}
+
+.projectGroup {
+  margin-top: calc(58 * var(--u));
+}
+
+.projectCard {
+  margin-top: calc(13 * var(--u));
+}
+
+.projectAction {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: calc(15 * var(--u));
+}
+
+.blogHeading {
+  padding-inline: calc(15 * var(--u));
+}
+
+.blogCard {
+  margin-top: calc(17 * var(--u));
+}
+
+.trackGroup {
+  margin-top: calc(76 * var(--u));
+}
+
+.trackCard {
+  margin-top: calc(4 * var(--u));
+  /* The disc pokes out past the column edge, as in the baseline. */
+  margin-left: calc(-20 * var(--u));
+}
+
+@media (max-width: 1023.98px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      'centre'
+      'tagline'
+      'left'
+      'right';
+    max-width: calc(var(--stack-width) + 2 * var(--page-gutter));
+    margin-inline: auto;
+    padding-inline: var(--page-gutter);
+  }
+
+  .tagline {
+    margin-top: 20px;
+  }
+
+  .left {
+    padding-top: 48px;
+  }
+
+  .right {
+    padding-top: 48px;
+  }
+
+  .projectGroup,
+  .trackGroup {
+    margin-top: 40px;
+  }
+
+  .educationCard,
+  .projectCard,
+  .blogCard {
+    margin-top: 16px;
+  }
+
+  .trackCard {
+    margin-top: 12px;
+    margin-left: 0;
+  }
+
+  .blogHeading {
+    padding-inline: 0;
+  }
+}

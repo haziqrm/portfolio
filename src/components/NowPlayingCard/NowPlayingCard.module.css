@@ -1,0 +1,96 @@
+.card {
+  --disc: calc(148 * var(--u));
+
+  display: flex;
+  align-items: flex-start;
+}
+
+/* The album art printed on a disc, with a ring + hole in the middle. */
+.disc {
+  position: relative;
+  z-index: 1;
+  flex: none;
+  width: var(--disc);
+  height: var(--disc);
+  overflow: hidden;
+  border-radius: 50%;
+  animation: spin 24s linear infinite;
+}
+
+.cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.3);
+}
+
+/* Faint edge so the disc stays visible where the cover art is white. */
+.disc::before {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1px var(--color-border);
+}
+
+.disc::after {
+  content: '';
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  width: calc(34 * var(--u));
+  height: calc(34 * var(--u));
+  border: calc(10.5 * var(--u)) solid var(--color-disc-ring);
+  border-radius: 50%;
+  background: var(--color-disc-hole);
+  box-sizing: content-box;
+  transform: translate(-50%, -50%);
+}
+
+.banner {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+  height: calc(106 * var(--u));
+  margin-top: calc(15 * var(--u));
+  margin-left: calc(var(--disc) / -2);
+  padding-left: calc(var(--disc) / 2 + 19 * var(--u));
+  padding-right: calc(32 * var(--u));
+  color: var(--color-on-surface);
+  background: var(--color-surface);
+  clip-path: polygon(
+    0 0,
+    calc(100% - var(--chamfer-lg)) 0,
+    100% var(--chamfer-lg),
+    100% 100%,
+    0 100%
+  );
+}
+
+.title,
+.artist {
+  overflow: hidden;
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-regular);
+  line-height: 1.15;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+@media (max-width: 1023.98px) {
+  .banner {
+    min-height: calc(106 * var(--u));
+    height: auto;
+    padding-block: 12px;
+  }
+}

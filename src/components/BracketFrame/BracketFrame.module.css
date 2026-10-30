@@ -1,0 +1,16 @@
+.frame {
+  --arm: calc(30 * var(--u));
+  --stroke: calc(8 * var(--u));
+  --mark: linear-gradient(var(--color-surface) 0 0);
+
+  background:
+    var(--mark) top left / var(--arm) var(--stroke),
+    var(--mark) top left / var(--stroke) var(--arm),
+    var(--mark) top right / var(--arm) var(--stroke),
+    var(--mark) top right / var(--stroke) var(--arm),
+    var(--mark) bottom left / var(--arm) var(--stroke),
+    var(--mark) bottom left / var(--stroke) var(--arm),
+    var(--mark) bottom right / var(--arm) var(--stroke),
+    var(--mark) bottom right / var(--stroke) var(--arm);
+  background-repeat: no-repeat;
+}

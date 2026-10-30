@@ -1,0 +1,20 @@
+node_modules
+dist
+*.local
+.env
+.env.*
+!.env.example
+.vercel
+*.tsbuildinfo
+.DS_Store
+
+# Claude Code
+CLAUDE.md
+CLAUDE.local.md
+.claude/
+
+# Local design comparison screenshots
+design-vs-build-*.png
+
+# Design baseline (kept locally)
+design/home-baseline.png

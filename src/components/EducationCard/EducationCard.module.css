@@ -1,0 +1,35 @@
+.card {
+  display: grid;
+  grid-template-columns: calc(150 * var(--u)) 1fr;
+  align-items: center;
+  column-gap: calc(20 * var(--u));
+  min-height: calc(161 * var(--u));
+  padding: calc(6 * var(--u)) calc(30 * var(--u)) calc(6 * var(--u)) calc(21 * var(--u));
+}
+
+.crest {
+  width: 100%;
+  height: auto;
+}
+
+.institution {
+  font-size: var(--fs-title);
+  font-weight: var(--fw-semibold);
+  line-height: 1.04;
+  color: var(--color-text);
+  margin-top: calc(4 * var(--u));
+}
+
+.course {
+  margin-top: calc(8 * var(--u));
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-light);
+  line-height: 1.21;
+}
+
+.period {
+  margin-top: calc(6 * var(--u));
+  font-size: var(--fs-base);
+  font-weight: var(--fw-medium);
+  line-height: 1.2;
+}

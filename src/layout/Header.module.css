@@ -1,0 +1,18 @@
+.header {
+  padding-top: calc(54 * var(--u));
+  padding-bottom: calc(40 * var(--u));
+  text-align: center;
+}
+
+.name {
+  font-size: var(--fs-display);
+  font-weight: var(--fw-medium);
+  line-height: 1.2;
+  color: var(--color-ink);
+}
+
+@media (max-width: 1023.98px) {
+  .header {
+    padding: 32px var(--page-gutter) 24px;
+  }
+}
